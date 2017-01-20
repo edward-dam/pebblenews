@@ -115,8 +115,9 @@ mainWind.on('click', 'select', function(e) {
   
   // display story
   newsMenu.on('select', function(e) {
-    var storyCard = new UI.Card({status: false, scrollable: true, style: style,
-       subtitleColor: textColor, bodyColor: textColor, backgroundColor: backgroundColor, 
+    var storyCard = new UI.Card({scrollable: true, style: style,
+      subtitleColor: textColor, bodyColor: textColor, backgroundColor: backgroundColor,
+      status: { separator: 'none', color: textColor, backgroundColor: backgroundColor }
     });
     storyCard.subtitle(window["newsTitle" + e.itemIndex]);
     storyCard.body(window["newsDescription" + e.itemIndex]);
