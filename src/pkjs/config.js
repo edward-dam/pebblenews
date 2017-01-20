@@ -14,7 +14,7 @@ module.exports = [
     "items": [
       {
         "type": "heading",
-        "defaultValue": "Powered by NewsAPI.org"
+        "defaultValue": "Powered by NewsAPI"
       },
       {
         "type": "text",
