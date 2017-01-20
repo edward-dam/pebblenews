@@ -8,6 +8,7 @@
 
 ![basalt.png](/assets/basalt.png)
 ![basalt-headlines.png](/assets/basalt-headlines.png)
+![basalt-headlines.png](/assets/basalt-story.png)
 
 ###banner
 
