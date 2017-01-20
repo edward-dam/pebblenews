@@ -1,0 +1,59 @@
+{
+    "author": "Edward.Dam",
+    "dependencies": {
+        "pebble-clay": "^1.0.0",
+        "pebblejs": "^1.0.0"
+    },
+    "keywords": [],
+    "name": "news-v1.0",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "News v1.0",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "message_keys"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/splash.png",
+                    "name": "SPLASH",
+                    "targetPlatforms": [
+                        "aplite",
+                        "basalt",
+                        "chalk",
+                        "diorite"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/menu_icon.png",
+                    "menuIcon": true,
+                    "name": "MENU_ICON",
+                    "targetPlatforms": [
+                        "aplite",
+                        "basalt",
+                        "chalk",
+                        "diorite"
+                    ],
+                    "type": "bitmap"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "aplite",
+            "basalt",
+            "chalk",
+            "diorite"
+        ],
+        "uuid": "0d3d88a7-38b6-460b-8b55-86f2c07c2a1b",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
