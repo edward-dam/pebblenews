@@ -15,7 +15,8 @@ var ajax     = require('pebblejs/lib/ajax');
 var Settings = require('pebblejs/settings');
 
 // collect api data
-var token = 'a90fc3fbb2a5465bbe9bff3296a548aa';
+var newsSource = 'google-news';
+var apiToken = 'a90fc3fbb2a5465bbe9bff3296a548aa';
 //console.log('Saved apidata: ' + Settings.data('newsapi'));
 collectnews();
 
@@ -129,7 +130,7 @@ mainWind.on('click', 'select', function(e) {
 // functions
 
 function collectnews() {
-  var url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + token;
+  var url = 'https://newsapi.org/v1/articles?source=' + newsSource + '&sortBy=top&apiKey=' + apiToken;
   ajax({ url: url, method: 'get', type: 'json' },
     function(api){
       //console.log('Collected apidata: ' + api);
