@@ -76,7 +76,7 @@ mainWind.on('click', 'down', function(e) {
   downText.position(position(-5));
   downHead.font(fontMedium);
   downText.font(fontSmall);
-  downHead.text('News v1.0');
+  downHead.text('News v1.1');
   downText.text('by Edward Dam');
   downWind.add(downHead);
   downWind.add(downText);

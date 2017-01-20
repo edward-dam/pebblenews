@@ -3,7 +3,7 @@
 module.exports = [
   {
     "type": "heading",
-    "defaultValue": "News v1.0"
+    "defaultValue": "News v1.1"
   },
   {
     "type": "text",
