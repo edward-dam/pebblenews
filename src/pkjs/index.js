@@ -129,7 +129,7 @@ mainWind.on('click', 'select', function(e) {
 // functions
 
 function collectnews() {
-  var url = 'https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=' + token;
+  var url = 'https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=' + token;
   ajax({ url: url, method: 'get', type: 'json' },
     function(api){
       //console.log('Collected apidata: ' + api);
