@@ -9,19 +9,6 @@ module.exports = [
     "type": "text",
     "defaultValue": "by Edward Dam"
   },
-  {
-    "type": "section",
-    "items": [
-      {
-        "type": "heading",
-        "defaultValue": "Powered by NewsAPI"
-      },
-      {
-        "type": "text",
-        "defaultValue": "https://newsapi.org/"
-      },
-    ]
-  },
   { "type": "section", "items": [
     { "type": "heading", "defaultValue": "Sports News" },
     { "type": "text", "defaultValue": "Please Enable or Disable" },
@@ -32,10 +19,10 @@ module.exports = [
   },
   {
     "type": "text",
-    "defaultValue": "Thank you for using my watch app."
+    "defaultValue": "Powered by NewsAPI.org"
   },
   {
     "type": "submit",
-    "defaultValue": "Exit"
+    "defaultValue": "Submit"
   }
 ];
