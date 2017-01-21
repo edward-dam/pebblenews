@@ -16,9 +16,11 @@ var Settings = require('pebblejs/settings');
 
 // collect api data
 var newsSource = 'google-news';
+var sportsSource = 'talksport';
 var apiToken = 'a90fc3fbb2a5465bbe9bff3296a548aa';
 //console.log('Saved apidata: ' + Settings.data('newsapi'));
 collectnews();
+collectsports();
 
 // definitions
 var window = new UI.Window();
@@ -88,15 +90,23 @@ mainWind.on('click', 'down', function(e) {
 mainWind.on('click', 'select', function(e) {
 
   // load collected api data
-  var apidata = Settings.data('newsapi');
-  //console.log('Loaded apidata: ' + apidata);
-
+  var newsdata = Settings.data('newsapi');
+  var sportsdata = Settings.data('sportsapi');
+  //console.log('Loaded newsdata: ' + newsdata);
+  //console.log('Loaded sportsdata: ' + sportsdata);
+  
   // determine api data
   for (var i = 0; i < 10; i++) {
-    window["newsTitle" + i] = apidata.articles[i].title;
-    window["newsDescription" + i] = apidata.articles[i].description;
+    window["newsTitle" + i] = newsdata.articles[i].title;
+    window["newsDescription" + i] = newsdata.articles[i].description;
     //console.log('newsTitle' + i + ': ' + window["newsTitle" + i]);
     //console.log('newsDescription' + i + ': ' + window["newsDescription" + i]);
+  }
+  for (var j = 0; j < 5; j++) {
+    window["sportsTitle" + j] = sportsdata.articles[j].title;
+    window["sportsDescription" + j] = sportsdata.articles[j].description;
+    //console.log('sportsTitle' + i + ': ' + window["sportsTitle" + i]);
+    //console.log('sportsDescription' + i + ': ' + window["sportsDescription" + i]);
   }
 
   // display screen
@@ -111,17 +121,32 @@ mainWind.on('click', 'select', function(e) {
       title: window["newsTitle" + i], subtitle: window["newsDescription" + i]
     });
   }
+  newsMenu.section(1, {title: 'Sports News'});
+  for (j = 0; j < 5; j++) {
+    newsMenu.item(1, j, { icon: icon,
+      title: window["sportsTitle" + j], subtitle: window["sportsDescription" + j]
+    });
+  }
   newsMenu.show();
   mainWind.hide();
   
   // display story
   newsMenu.on('select', function(e) {
+    var subtitle;
+    var body;
     var storyCard = new UI.Card({scrollable: true, style: style,
       subtitleColor: textColor, bodyColor: textColor, backgroundColor: backgroundColor,
       status: { separator: 'none', color: textColor, backgroundColor: backgroundColor }
     });
-    storyCard.subtitle(window["newsTitle" + e.itemIndex]);
-    storyCard.body(window["newsDescription" + e.itemIndex]);
+    if (e.sectionIndex === 0) {
+      subtitle = "newsTitle";
+      body = "newsDescription";
+    } else {
+      subtitle = "sportsTitle";
+      body = "sportsDescription";
+    }
+    storyCard.subtitle(window[subtitle + e.itemIndex]);
+    storyCard.body(window[body + e.itemIndex]);
     storyCard.show();
   });
 
@@ -135,6 +160,16 @@ function collectnews() {
     function(api){
       //console.log('Collected apidata: ' + api);
       Settings.data('newsapi', api);
+    }
+  );
+}
+
+function collectsports() {
+  var url = 'https://newsapi.org/v1/articles?source=' + sportsSource + '&sortBy=top&apiKey=' + apiToken;
+  ajax({ url: url, method: 'get', type: 'json' },
+    function(api){
+      //console.log('Collected apidata: ' + api);
+      Settings.data('sportsapi', api);
     }
   );
 }
