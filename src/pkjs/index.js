@@ -95,6 +95,10 @@ mainWind.on('click', 'select', function(e) {
   //console.log('Loaded newsdata: ' + newsdata);
   //console.log('Loaded sportsdata: ' + sportsdata);
   
+  // load options
+  var options = JSON.parse(localStorage.getItem('clay-settings'));
+  //console.log('Loaded sportsnews option: ' + options.sports_news);
+  
   // determine api data
   for (var i = 0; i < 10; i++) {
     window["newsTitle" + i] = newsdata.articles[i].title;
@@ -121,11 +125,13 @@ mainWind.on('click', 'select', function(e) {
       title: window["newsTitle" + i], subtitle: window["newsDescription" + i]
     });
   }
-  newsMenu.section(1, {title: 'Sports News'});
-  for (j = 0; j < 5; j++) {
-    newsMenu.item(1, j, { icon: icon,
-      title: window["sportsTitle" + j], subtitle: window["sportsDescription" + j]
-    });
+  if ( options.sports_news === "enable" ) {
+    newsMenu.section(1, {title: 'Sports News'});
+    for (j = 0; j < 5; j++) {
+      newsMenu.item(1, j, { icon: icon,
+        title: window["sportsTitle" + j], subtitle: window["sportsDescription" + j]
+      });
+    }
   }
   newsMenu.show();
   mainWind.hide();

@@ -13,7 +13,8 @@
         "displayName": "News v1.1",
         "enableMultiJS": true,
         "messageKeys": [
-            "message_keys"
+            "message_keys",
+            "sports_news"
         ],
         "projectType": "native",
         "resources": {
@@ -55,5 +56,5 @@
             "watchface": false
         }
     },
-    "version": "1.12.0"
+    "version": "1.13.0"
 }
