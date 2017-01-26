@@ -96,9 +96,11 @@ mainWind.on('click', 'select', function(e) {
   //console.log('Loaded sportsnews option: ' + options.sports_news);
 
   // collect sports api data
-  if ( options.sports_news === "enable" ) {
-    collectsports('talksport');
-    collectsports('espn');
+  if ( options !== null ) {
+    if ( options.sports_news === "enable" ) {
+      collectsports('talksport');
+      collectsports('espn');
+    }
   }
   
   // determine api data
@@ -121,10 +123,12 @@ mainWind.on('click', 'select', function(e) {
       title: window["newsTitle" + i], subtitle: window["newsDescription" + i]
     });
   }
-  if ( options.sports_news === "enable" ) {
-    newsMenu.section(1, {title: 'Sports News'});
-    newsMenu.item(1, 0, { icon: icon, title: "British", subtitle: "talkSPORT" } );
-    newsMenu.item(1, 1, { icon: icon, title: "American", subtitle: "ESPN" } );
+  if ( options !== null ) {
+    if ( options.sports_news === "enable" ) {
+      newsMenu.section(1, {title: 'Sports News'});
+      newsMenu.item(1, 0, { icon: icon, title: "American", subtitle: "ESPN" } );
+      newsMenu.item(1, 1, { icon: icon, title: "British", subtitle: "talkSPORT" } );
+    }
   }
   newsMenu.show();
   mainWind.hide();
@@ -148,9 +152,9 @@ mainWind.on('click', 'select', function(e) {
        // load collected sports api data
       var sportsdata;
       if ( e.itemIndex === 0 ) {
-        sportsdata = Settings.data('talksportapi');
-      } else {
         sportsdata = Settings.data('espnapi');
+      } else {
+        sportsdata = Settings.data('talksportapi');
       }
 
       // determine sports api data
@@ -174,6 +178,7 @@ mainWind.on('click', 'select', function(e) {
         });
       }
       sportsMenu.show();
+      newsMenu.hide();
 
       // display sports story
       sportsMenu.on('select', function(e) {
