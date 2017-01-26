@@ -17,7 +17,7 @@ var Settings = require('pebblejs/settings');
 // collect api data
 var newsSource = 'google-news';
 var apiToken = 'a90fc3fbb2a5465bbe9bff3296a548aa';
-//console.log('Saved newsdata: ' + Settings.data('newsapi'));
+//console.log('Saved newsapi: ' + Settings.data('newsapi'));
 collectnews();
 
 // definitions
@@ -157,8 +157,8 @@ mainWind.on('click', 'select', function(e) {
       for (var j = 0; j < 5; j++) {
         window["sportsTitle" + j] = sportsdata.articles[j].title;
         window["sportsDescription" + j] = sportsdata.articles[j].description;
-        //console.log('sportsTitle' + i + ': ' + window["sportsTitle" + i]);
-        //console.log('sportsDescription' + i + ': ' + window["sportsDescription" + i]);
+        //console.log('sportsTitle' + j + ': ' + window["sportsTitle" + j]);
+        //console.log('sportsDescription' + j + ': ' + window["sportsDescription" + j]);
       }
       
       // display sports menu
