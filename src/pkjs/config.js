@@ -3,23 +3,28 @@
 module.exports = [
   {
     "type": "heading",
-    "defaultValue": "News v1.1"
+    "defaultValue": "News v1.2"
   },
   {
     "type": "text",
     "defaultValue": "by Edward Dam"
   },
-  { "type": "section", "items": [
-    { "type": "heading", "defaultValue": "Sports News" },
-    { "type": "text", "defaultValue": "Please Enable or Disable" },
-    { "type": "radiogroup", "messageKey": "sports_news", "options": [
-      { "label": "Enable", "value": "enable" },
-      { "label": "Disable", "value": "disable" } ],
-    "defaultValue": "disable" } ]
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
+        "defaultValue": "Top Google News"
+      },
+      {
+        "type": "text",
+        "defaultValue": "Powered by NewsAPI.org"
+      },
+    ]
   },
   {
     "type": "text",
-    "defaultValue": "Powered by NewsAPI.org"
+    "defaultValue": "Thank you for using my watch app."
   },
   {
     "type": "submit",

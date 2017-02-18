@@ -5,16 +5,15 @@
         "pebblejs": "^1.0.0"
     },
     "keywords": [],
-    "name": "news-v1.1",
+    "name": "news-v1.2",
     "pebble": {
         "capabilities": [
             "configurable"
         ],
-        "displayName": "News v1.1",
+        "displayName": "News v1.2",
         "enableMultiJS": true,
         "messageKeys": [
-            "message_keys",
-            "sports_news"
+            "message_keys"
         ],
         "projectType": "native",
         "resources": {
@@ -56,5 +55,5 @@
             "watchface": false
         }
     },
-    "version": "1.16.0"
+    "version": "1.20.0"
 }

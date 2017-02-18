@@ -77,7 +77,7 @@ mainWind.on('click', 'down', function(e) {
   downText.position(position(-5));
   downHead.font(fontMedium);
   downText.font(fontSmall);
-  downHead.text('News v1.1');
+  downHead.text('News v1.2');
   downText.text('by Edward Dam');
   downWind.add(downHead);
   downWind.add(downText);
@@ -90,18 +90,6 @@ mainWind.on('click', 'select', function(e) {
   // load collected api data
   var newsdata = Settings.data('newsapi');
   //console.log('Loaded newsdata: ' + newsdata);
-
-  // load options
-  var options = JSON.parse(localStorage.getItem('clay-settings'));
-  //console.log('Loaded sportsnews option: ' + options.sports_news);
-
-  // collect sports api data
-  if ( options !== null ) {
-    if ( options.sports_news === "enable" ) {
-      collectsports('talksport');
-      collectsports('espn');
-    }
-  }
   
   // determine api data
   for (var i = 0; i < 10; i++) {
@@ -123,74 +111,18 @@ mainWind.on('click', 'select', function(e) {
       title: window["newsTitle" + i], subtitle: window["newsDescription" + i]
     });
   }
-  if ( options !== null ) {
-    if ( options.sports_news === "enable" ) {
-      newsMenu.section(1, {title: 'Sports News'});
-      newsMenu.item(1, 0, { icon: icon, title: "American", subtitle: "ESPN" } );
-      newsMenu.item(1, 1, { icon: icon, title: "British", subtitle: "talkSPORT" } );
-    }
-  }
   newsMenu.show();
   mainWind.hide();
 
   // on select
   newsMenu.on('select', function(e) {
-    
-    // display news story
-    if (e.sectionIndex === 0) {
-      var storyCard = new UI.Card({scrollable: true, style: style,
-        subtitleColor: textColor, bodyColor: textColor, backgroundColor: backgroundColor,
-        status: { separator: 'none', color: textColor, backgroundColor: backgroundColor }
-      });
-      storyCard.subtitle(window["newsTitle" + e.itemIndex]);
-      storyCard.body(window["newsDescription" + e.itemIndex]);
-      storyCard.show();
-  
-    // display sports
-    } else {
-      
-       // load collected sports api data
-      var sportsdata;
-      if ( e.itemIndex === 0 ) {
-        sportsdata = Settings.data('espnapi');
-      } else {
-        sportsdata = Settings.data('talksportapi');
-      }
-
-      // determine sports api data
-      for (var j = 0; j < 5; j++) {
-        window["sportsTitle" + j] = sportsdata.articles[j].title;
-        window["sportsDescription" + j] = sportsdata.articles[j].description;
-        //console.log('sportsTitle' + j + ': ' + window["sportsTitle" + j]);
-        //console.log('sportsDescription' + j + ': ' + window["sportsDescription" + j]);
-      }
-      
-      // display sports menu
-      var sportsMenu = new UI.Menu({ //fullscreen: true,
-        textColor: textColor, highlightBackgroundColor: highlightBackgroundColor,
-        backgroundColor: backgroundColor, highlightTextColor: highlightTextColor,
-        status: { separator: 'none', color: textColor, backgroundColor: backgroundColor }
-      });
-      sportsMenu.section(0, {title: 'Sports News'});
-      for (j = 0; j < 5; j++) {
-        sportsMenu.item(1, j, { icon: icon,
-          title: window["sportsTitle" + j], subtitle: window["sportsDescription" + j]
-        });
-      }
-      sportsMenu.show();
-      newsMenu.hide();
-
-      // display sports story
-      sportsMenu.on('select', function(e) {
-        var storyCard = new UI.Card({scrollable: true, style: style,
-          subtitleColor: textColor, bodyColor: textColor, backgroundColor: backgroundColor,
-          status: { separator: 'none', color: textColor, backgroundColor: backgroundColor }
-        });
-        storyCard.subtitle(window["sportsTitle" + e.itemIndex]);
-        storyCard.body(window["sportsDescription" + e.itemIndex]);
-        storyCard.show();
-      });
-    }
+    var storyCard = new UI.Card({scrollable: true, style: style,
+      subtitleColor: textColor, bodyColor: textColor, backgroundColor: backgroundColor,
+      status: { separator: 'none', color: textColor, backgroundColor: backgroundColor }
+    });
+    storyCard.subtitle(window["newsTitle" + e.itemIndex]);
+    storyCard.body(window["newsDescription" + e.itemIndex]);
+    storyCard.show();
   });
 });
 
@@ -202,20 +134,6 @@ function collectnews() {
     function(api){
       //console.log('Collected apidata: ' + api);
       Settings.data('newsapi', api);
-    }
-  );
-}
-
-function collectsports(sportsSource) {
-  var url = 'https://newsapi.org/v1/articles?source=' + sportsSource + '&sortBy=top&apiKey=' + apiToken;
-  ajax({ url: url, method: 'get', type: 'json' },
-    function(api){
-      //console.log('Collected apidata: ' + api);
-      if ( sportsSource === 'talksport') {
-        Settings.data('talksportapi', api);
-      } else if( sportsSource === 'espn') {
-        Settings.data('espnapi', api);
-      }
     }
   );
 }
