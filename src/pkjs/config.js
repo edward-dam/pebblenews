@@ -28,6 +28,6 @@ module.exports = [
   },
   {
     "type": "submit",
-    "defaultValue": "Submit"
+    "defaultValue": "Exit"
   }
 ];
