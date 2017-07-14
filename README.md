@@ -16,7 +16,7 @@
 
 ### app store
 
-https://apps.getpebble.com/applications/5881cef693254a4270000158
+https://apps.getpebble.com/en_US/application/5881cef693254a4270000158
 
 ### description
 Read the latest worldwide news headlines.
