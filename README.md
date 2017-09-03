@@ -1,22 +1,22 @@
 # pebblenews
-### icons
+## icons
 
 ![icon-144.png](/assets/icon-144.png)
 ![icon-48.png](/assets/icon-48.png)
 
-### screenshots
+## screenshots
 
 ![basalt.png](/assets/basalt.png)
 ![basalt-headlines.png](/assets/basalt-headlines.png)
 ![basalt-headlines.png](/assets/basalt-story.png)
 
-### banner
+## banner
 
 ![banner.png](/assets/banner.png)
 
-### app store
+## app store
 
 https://apps.getpebble.com/en_US/application/5881cef693254a4270000158
 
-### description
+## description
 Read the latest worldwide news headlines.
